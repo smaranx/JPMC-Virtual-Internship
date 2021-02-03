@@ -1,0 +1,61 @@
+From 9d773357df6ef911418925a54ee9e6a80a8d9574 Mon Sep 17 00:00:00 2001
+From: Smaran Ummadishetty <speak2smaran@gmail.com>
+Date: Wed, 3 Feb 2021 09:08:04 +0000
+Subject: [PATCH] Create Patch File
+
+---
+ jpm_module_1/client3.py | 12 +++++-------
+ new_client3.py          | 10 ----------
+ 2 files changed, 5 insertions(+), 17 deletions(-)
+ delete mode 100644 new_client3.py
+
+diff --git a/jpm_module_1/client3.py b/jpm_module_1/client3.py
+index f1771c3..9b56d62 100644
+--- a/jpm_module_1/client3.py
++++ b/jpm_module_1/client3.py
+@@ -35,15 +35,13 @@ def getDataPoint(quote):
+ 	stock = quote['stock']
+ 	bid_price = float(quote['top_bid']['price'])
+ 	ask_price = float(quote['top_ask']['price'])
+-	price = bid_price
++	price = (bid_price + ask_price)/ 2
+ 	return stock, bid_price, ask_price, price
+ 
+ def getRatio(price_a, price_b):
+-	""" Get ratio of price_a and price_b """
+-	""" ------------- Update this function ------------- """
+-	""" Also create some unit tests for this function in client_test.py """
+-	return 1
+-
++	if ( price_b==0):
++    return
++  return price_a/price_b
+ # Main
+ if __name__ == "__main__":
+ 
+@@ -56,4 +54,4 @@ if __name__ == "__main__":
+ 			stock, bid_price, ask_price, price = getDataPoint(quote)
+ 			print ("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
+ 
+-		print ("Ratio %s" % getRatio(price, price))
++		print ("Ratio %s" % getRatio(price['ABC'], price['DEF']))
+diff --git a/new_client3.py b/new_client3.py
+deleted file mode 100644
+index 65c2e93..0000000
+--- a/new_client3.py
++++ /dev/null
+@@ -1,10 +0,0 @@
+-#This is where you would manually type the existing code in the client3.py, which is inside the jpm_module_1 folder (disregard copying the useless comments) so that you can avoid the dreaded tab editing issues in REPL particularly for the Python environment only
+-
+-#After manually copying the useful code in client3.py, you can make your changes here
+-
+-#Before you test your modified code is working, make sure you have done the initial steps needed to be done before making changes in the instruction slides
+-
+-#Then, to test, first, delete the client3.py file inside jpm_module_1. Then rename this file to just client3.py. Finally move this file inside the jpm_module_1 folder  
+-
+-# Delete these comments when you're done...
+-# Comments are anything that's preceded with '#'
+\ No newline at end of file
+-- 
+2.17.1
+
